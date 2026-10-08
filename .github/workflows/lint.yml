@@ -1,0 +1,9 @@
+name: lint
+on: [push, pull_request]
+jobs:
+  skill-meta:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo snap install yq
+      - run: scripts/skill-meta.sh

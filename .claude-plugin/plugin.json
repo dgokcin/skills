@@ -1,0 +1,23 @@
+{
+  "name": "dgokcin-skills",
+  "version": "0.1.0",
+  "description": "Deniz Gokcin's agent skills, subagents, and output styles for day-to-day engineering work.",
+  "author": {
+    "name": "Deniz Gokcin",
+    "url": "https://github.com/dgokcin"
+  },
+  "repository": "https://github.com/dgokcin/skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "git",
+    "jira",
+    "kubernetes",
+    "obsidian"
+  ],
+  "skills": [
+    "./skills/personal",
+    "./skills/work"
+  ],
+  "outputStyles": "./output-styles"
+}

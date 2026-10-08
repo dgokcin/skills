@@ -1,0 +1,16 @@
+{
+  "name": "dgokcin",
+  "owner": {
+    "name": "Deniz Gokcin",
+    "url": "https://github.com/dgokcin"
+  },
+  "description": "Deniz Gokcin's agent skills as an installable Claude Code plugin.",
+  "plugins": [
+    {
+      "name": "dgokcin-skills",
+      "source": "./",
+      "description": "Agent skills, subagents, and output styles for day-to-day engineering work.",
+      "category": "engineering"
+    }
+  ]
+}
