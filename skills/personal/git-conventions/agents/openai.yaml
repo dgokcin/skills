@@ -1,0 +1,3 @@
+interface:
+  display_name: "Git Conventions"
+  short_description: "Commit, branch, and PR body rules"
