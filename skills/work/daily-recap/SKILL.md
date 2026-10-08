@@ -27,7 +27,7 @@ allowed-tools:
   - Bash(cat:*)
   - Bash(date:*)
   - Bash(find:*)
-  - Bash(python3 ~/.claude/skills/daily-recap/scripts/summarize-claude-sessions.py:*)
+  - Bash(python3 ${CLAUDE_SKILL_DIR}/scripts/summarize-claude-sessions.py:*)
   - Bash(claude -p:*)
   # Slack (read-only)
   - mcp__claude_ai_Slack__slack_search_public_and_private
@@ -309,7 +309,7 @@ For each meeting where Gemini data was successfully fetched (step 2i above):
 Run the companion script to extract session data, then pipe to a Haiku subagent for summarization. This captures engineering work that never surfaces in Slack or Gmail (local coding, debugging, config changes, dotfiles work).
 
 ```bash
-python3 ~/.claude/skills/daily-recap/scripts/summarize-claude-sessions.py YYYY-MM-DD | \
+python3 ${CLAUDE_SKILL_DIR}/scripts/summarize-claude-sessions.py YYYY-MM-DD | \
   claude -p --model claude-haiku-5-5 \
   "Summarize these Claude Code sessions into 2-5 bullet points of what engineering work was done. Focus on: features built, tickets worked, bugs debugged, code changed. Skip meta/tooling sessions (e.g. only ran 'exit', only did shell commands with no edits). Max one line per bullet. Output plain bullets only."
 ```
