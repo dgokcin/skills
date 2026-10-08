@@ -1,0 +1,4 @@
+[
+  { "cluster": "prod-alpha", "context": "prod-account/prod-alpha" },
+  { "cluster": "staging-beta", "context": "staging-account/staging-beta" }
+]

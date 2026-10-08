@@ -1,0 +1,4 @@
+# Private config (see local.example/)
+local/
+
+.DS_Store
