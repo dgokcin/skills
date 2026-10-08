@@ -1,36 +1,24 @@
 # Skills
 
-My agent skills, subagents, and output styles. They follow the [Agent Skills](https://agentskills.io) standard, so they work in Claude Code, Codex, Cursor, and anything else that reads `SKILL.md`.
+My agent skills. They follow the [Agent Skills](https://agentskills.io) standard, so they work in Claude Code, Codex, Cursor, and anything else that reads `SKILL.md`.
 
 ## Install
-
-### Claude Code plugin
-
-```bash
-claude plugin marketplace add dgokcin/skills
-claude plugin install dgokcin-skills@dgokcin
-```
-
-Plugin skills are namespaced, e.g. `/dgokcin-skills:create-pr`.
-
-### Any agent, via skills.sh
 
 ```bash
 npx skills@latest add dgokcin/skills
 ```
 
-### Local dev (what I use)
+The [`skills` CLI](https://github.com/vercel-labs/skills) lets you pick the skills and agents you want. Add `-g` to install for your user instead of the current project.
 
-```bash
-git clone git@github.com:dgokcin/skills.git ~/codes/skills
-~/codes/skills/scripts/link-skills.sh
-```
-
-This symlinks every skill into `~/.claude/skills` and `~/.agents/skills`, agents into `~/.claude/agents` and `~/.cursor/agents`, and output styles into `~/.claude/output-styles`. Skills keep their bare names (`/create-pr`), and edits apply live. `--unlink` removes the links.
+My own laptop installs them through [dotfiles](https://github.com/dgokcin/dotfiles) with `make skills`. That runs the same picker, then links each skill back into a clone of this repo so edits apply live.
 
 ## Private config
 
-Some skills need values that don't belong in a public repo: Jira IDs, cluster contexts, Slack IDs, GitLab hosts. Skills read them from `~/.config/dgokcin-skills/`, which `link-skills.sh` points at the gitignored `local/` dir. On first run the script seeds `local/` from [`local.example/`](local.example/).
+Some skills need values that don't belong in a public repo, like Jira IDs, cluster contexts, Slack IDs, and GitLab hosts. Skills read them from `~/.config/dgokcin-skills/`. Copy [`local.example/`](local.example/) there and fill in your own values:
+
+```bash
+cp -R local.example ~/.config/dgokcin-skills
+```
 
 ## Skills
 
@@ -42,12 +30,6 @@ Some skills need values that don't belong in a public repo: Jira IDs, cluster co
 | work | `create-story`, `get-story`, `log-work`, `k8s-debug`, `aws-debug` | model |
 | work | `daily-recap` | user |
 
-Retired skills sit in `skills/archived/`. They aren't installed anywhere.
+Retired skills sit in `skills/archived/`. The `skills` CLI hides them.
 
 See [`docs/invocation.md`](docs/invocation.md) for what user- and model-invoked mean.
-
-## Agents and output styles
-
-- `agents/gitops-geezer.md`: ArgoCD and GitOps reviewer
-- `agents/steve-square-meter.md`: funda.nl listing analyst
-- `output-styles/declaude.md`, `output-styles/terse.md`
