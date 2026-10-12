@@ -14,4 +14,5 @@ On my laptop, dotfiles' `make skills` seeds the gitignored `local/` dir from thi
 | `clusters.json` | k8s-debug |
 | `gitlab-hosts` | create-pr, address-review, worktree-cleanup |
 | `daily-recap.md` | daily-recap |
+| `support-watch.md` | support-watch |
 | `house-search.md` | save-property-to-vault, plus the steve-square-meter agent in dotfiles |

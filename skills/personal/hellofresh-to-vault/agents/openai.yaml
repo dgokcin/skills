@@ -1,0 +1,3 @@
+interface:
+  display_name: "HelloFresh To Vault"
+  short_description: "Sync HelloFresh recipes into the vault cookbook"
