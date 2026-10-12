@@ -26,9 +26,9 @@ cp -R local.example ~/.config/dgokcin-skills
 |--------|-------|------------|
 | personal | `auto-commit`, `create-pr`, `git-conventions`, `worktree-cleanup` | model |
 | personal | `address-review` | user |
-| personal | `slackify`, `vault-capture`, `save-property-to-vault` | model |
+| personal | `slackify`, `vault-capture`, `save-property-to-vault`, `hellofresh-to-vault` | model |
 | work | `create-story`, `get-story`, `log-work`, `k8s-debug`, `aws-debug` | model |
-| work | `daily-recap` | user |
+| work | `daily-recap`, `support-watch` | user |
 
 Retired skills sit in `skills/archived/`. The `skills` CLI hides them.
 
