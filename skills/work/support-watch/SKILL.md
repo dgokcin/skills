@@ -1,7 +1,6 @@
 ---
 name: support-watch
 description: "Check a Slack channel for new help requests aimed at your team, investigate each one read-only, and play a sound when there is a finding. Built for /loop 15m."
-disable-model-invocation: true
 argument-hint: "[channel-id ...] (defaults to the channels in config)"
 allowed-tools:
   - Read
