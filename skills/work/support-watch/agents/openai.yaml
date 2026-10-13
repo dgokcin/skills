@@ -1,5 +1,3 @@
 interface:
   display_name: "Support Watch"
   short_description: "Watch Slack for team help requests and investigate them"
-policy:
-  allow_implicit_invocation: false
