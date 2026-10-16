@@ -19,6 +19,8 @@ TZ = ZoneInfo("Europe/Amsterdam")
 PROJECTS_DIR = os.path.expanduser("~/.claude/projects")
 # Minimum lines to consider a session substantive
 MIN_LINES = 5
+# Opening of the summarizer prompt in SKILL.md step 2j
+SUMMARIZER_PREFIX = "Summarize these Claude Code sessions"
 
 
 def main():
@@ -42,11 +44,12 @@ def main():
                 continue
             fp = os.path.join(proj_path, fname)
 
-            # Quick mtime pre-filter: skip files not touched on target date
+            # Quick mtime pre-filter: skip files last touched before the target date.
+            # Sessions resumed later keep a newer mtime, so parse_session does the exact date check.
             try:
                 mtime = os.path.getmtime(fp)
                 mtime_date = datetime.fromtimestamp(mtime, tz=TZ).date()
-                if mtime_date != target_date:
+                if mtime_date < target_date:
                     continue
             except OSError:
                 continue
@@ -155,6 +158,10 @@ def parse_session(fp: str, target_date) -> dict | None:
 
     # Only include sessions with activity on the target date
     if not timestamps:
+        return None
+
+    # Skip the recap's own `claude -p` summarizer runs
+    if first_user_msg and first_user_msg.startswith(SUMMARIZER_PREFIX):
         return None
 
     start_dt = min(timestamps)
