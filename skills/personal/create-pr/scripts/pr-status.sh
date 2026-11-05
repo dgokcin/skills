@@ -1,18 +1,21 @@
 #!/usr/bin/env bash
 # Print repo, branch, and PR/MR context for the create-pr skill.
-# Usage: pr-status.sh [gh|gl] [repo-path]   (args may also arrive on stdin)
+# Usage: pr-status.sh [gh|gl] [repo-path] [free-text instructions]
+# Args may also arrive on stdin. Words that are not a hint or a path are
+# echoed back as "Extra instructions" so the skill can honor them.
 # Always exits 0, because a failing injection command aborts the whole skill.
 
 args="$*"
 [ -z "$args" ] && [ ! -t 0 ] && args="$(cat)"
 
 set -f
-hint="" path=""
+hint="" path="" extra=""
 for word in $args; do
   case "$word" in
-    gh|gl) [ -z "$hint" ] && hint="$word" ;;
-    /*|\~*|./*|../*|.|..) [ -z "$path" ] && path="$word" ;;
+    gh|gl) [ -z "$hint" ] && hint="$word" && continue ;;
+    /*|\~*|./*|../*|.|..) [ -z "$path" ] && path="$word" && continue ;;
   esac
+  extra="${extra:+$extra }$word"
 done
 set +f
 case "$path" in
@@ -22,6 +25,7 @@ esac
 
 echo "- VCS hint: ${hint:-(none)}"
 echo "- Repo path argument: ${path:-(none, using session cwd)}"
+echo "- Extra instructions: ${extra:-(none)}"
 
 root="$(git -C "${path:-.}" rev-parse --show-toplevel 2>/dev/null)"
 if [ -z "$root" ]; then

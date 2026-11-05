@@ -7,6 +7,8 @@ Usage: python3 summarize-claude-sessions.py [YYYY-MM-DD]
        Defaults to today in Europe/Amsterdam timezone.
 """
 
+from __future__ import annotations
+
 import json
 import os
 import re

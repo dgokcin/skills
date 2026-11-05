@@ -1,0 +1,5 @@
+interface:
+  display_name: "Performance Review"
+  short_description: "Draft mid-year or year-end self and peer reviews"
+policy:
+  allow_implicit_invocation: false
